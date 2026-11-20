@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: edusphere-saas
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SUPER_ADMIN_EMAIL
+        value: owner@edusphere.com
+      - key: SUPER_ADMIN_PASSWORD
+        generateValue: true
+      - key: MOMO_MERCHANT_NUMBER
+        value: "231880242760"
+      - key: FLASK_DEBUG
+        value: "0"
