@@ -277,6 +277,11 @@ def ensure_sqlite_columns():
           )
 
 
+
+with app.app_context():
+  db.create_all()
+  ensure_sqlite_columns()
+
 def get_platform_config():
   cfg = PlatformConfig.query.first()
   if not cfg:
